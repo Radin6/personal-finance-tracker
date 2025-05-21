@@ -1,9 +1,8 @@
 package com.example.PersonalFinanceTracker.Controller;
 
-import com.example.PersonalFinanceTracker.Entities.User;
+import com.example.PersonalFinanceTracker.Entity.User;
 import com.example.PersonalFinanceTracker.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +10,7 @@ import java.util.List;
 // Handles incoming HTTP request (REST API) and return responses
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
@@ -20,20 +20,14 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
-    public String hello() {
-        return "Hello world!";
-    }
-
-    @PostMapping("/user")
+    @PostMapping
     public String createUser(@RequestBody User user) {
+        User newUser = userService.createUser(user);
 
-        userService.createUser(user);
-
-        return "User created";
+        return "User created: " + newUser.getName();
     }
 
-    @GetMapping("/users")
+    @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }

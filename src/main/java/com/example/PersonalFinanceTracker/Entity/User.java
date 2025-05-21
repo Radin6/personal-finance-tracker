@@ -1,4 +1,4 @@
-package com.example.PersonalFinanceTracker.Entities;
+package com.example.PersonalFinanceTracker.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -12,8 +12,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String name;
     private String email;
-    @JsonIgnore
+
+    @JsonIgnore // It is being ignored when .toString is used
     private String password;
 }

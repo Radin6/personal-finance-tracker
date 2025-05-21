@@ -1,6 +1,6 @@
 package com.example.PersonalFinanceTracker.Service;
 
-import com.example.PersonalFinanceTracker.Entities.User;
+import com.example.PersonalFinanceTracker.Entity.User;
 import com.example.PersonalFinanceTracker.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

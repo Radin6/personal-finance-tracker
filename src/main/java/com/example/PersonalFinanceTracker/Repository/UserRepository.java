@@ -1,6 +1,6 @@
 package com.example.PersonalFinanceTracker.Repository;
 
-import com.example.PersonalFinanceTracker.Entities.User;
+import com.example.PersonalFinanceTracker.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 // Repository: Provides CRUD operations for interact with the DB
