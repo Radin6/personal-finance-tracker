@@ -1,5 +1,6 @@
 package com.example.PersonalFinanceTracker.Service;
 
+import com.example.PersonalFinanceTracker.DTO.TransactionRequest;
 import com.example.PersonalFinanceTracker.Entity.Transaction;
 import com.example.PersonalFinanceTracker.Entity.User;
 import com.example.PersonalFinanceTracker.Repository.TransactionRepository;
@@ -24,14 +25,18 @@ public class TransactionService {
         return transactionRepository.findAll();
     }
 
-    public Transaction addTransaction(Transaction newTransaction) {
-        System.out.println("userId: "+newTransaction.getUser().getId());
+    public Transaction addTransaction(TransactionRequest newTransaction) {
 
-        User user = userRepository.findById(newTransaction.getUser().getId()).orElseThrow(
+        User user = userRepository.findById(newTransaction.getUserId()).orElseThrow(
                 () -> new RuntimeException("User not found")
         );
 
-        newTransaction.setUser(user);
-        return transactionRepository.save(newTransaction);
+        Transaction transaction = new Transaction();
+        transaction.setUser(user);
+        transaction.setDescription(newTransaction.getDescription());
+        transaction.setType(newTransaction.getType());
+        transaction.setAmount(newTransaction.getAmount());
+
+        return transactionRepository.save(transaction);
     }
 }

@@ -2,6 +2,7 @@ package com.example.PersonalFinanceTracker.Controller;
 
 import com.example.PersonalFinanceTracker.Entity.User;
 import com.example.PersonalFinanceTracker.Service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ public class UserController {
         this.userService = userService;
     }
 
+    @Operation(summary = "Create a new user", description = "")
     @PostMapping
     public String createUser(@RequestBody User user) {
         User newUser = userService.createUser(user);
@@ -27,6 +29,7 @@ public class UserController {
         return "User created: " + newUser.getName();
     }
 
+    @Operation(summary = "Get all users", description = "")
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();

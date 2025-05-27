@@ -1,6 +1,6 @@
 package com.example.PersonalFinanceTracker.Entity;
 
-import jakarta.annotation.Nullable;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -10,8 +10,9 @@ import java.time.LocalDateTime;
 @Data
 public class Transaction {
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -24,4 +25,5 @@ public class Transaction {
 
     private String description;
     private Long amount;
+    private TransactionType type;
 }
