@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class TransactionRequest {
-    private Long userId;
+    private Long userId; // Delete this when JWT is implemented
 
     private String description;
     private Long amount;

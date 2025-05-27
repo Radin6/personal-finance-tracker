@@ -19,6 +19,7 @@ public class User {
     private String name;
     private String email;
 
-    @JsonIgnore // It is being ignored when .toString is used
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+
 }

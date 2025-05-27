@@ -1,5 +1,7 @@
 package com.example.PersonalFinanceTracker.Controller;
 
+import com.example.PersonalFinanceTracker.DTO.LoginResponse;
+import com.example.PersonalFinanceTracker.DTO.UserRequest;
 import com.example.PersonalFinanceTracker.Entity.User;
 import com.example.PersonalFinanceTracker.Service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,6 +35,12 @@ public class UserController {
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
+    }
+
+    @Operation(summary = "Login user", description = "")
+    @PostMapping("/login")
+    public LoginResponse loginUser(@RequestBody UserRequest user) {
+        return userService.loginUser(user);
     }
 
 }
